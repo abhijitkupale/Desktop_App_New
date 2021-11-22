@@ -7,9 +7,9 @@ trigger:
 - main
 
 pool:
-  name: Desktop App
+  name: Azure Pipelines
   demands:
-  - Agent.Name -equals Desktop-Agent-1
+  - Agent.Name -equals windows-latest
   - msbuild
   - visualstudio
   - vstest
