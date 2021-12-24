@@ -6,8 +6,8 @@
 trigger:
 - main
 
-pool:
-  name: Desktop-Application
+Pool:
+  name:Desktop-Application
   demands:
   - Agent.Name -equals Desktop-App-Agent-1
   - msbuild
@@ -21,15 +21,15 @@ variables:
 
 steps:
 - task: NuGetToolInstaller@1
+  inputs:
+    versionSpec: '4.4.1'
 
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
 
 - task: VSBuild@1
   inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    solution: '**\*.sln'
