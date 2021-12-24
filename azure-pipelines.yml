@@ -6,10 +6,9 @@
 trigger:
 - main
 
-Pool:
-  name:Desktop-Application
+pool:
+  name: Desktop-Application
   demands:
-  - Agent.Name -equals Desktop-App-Agent-1
   - msbuild
   - visualstudio
   - vstest
